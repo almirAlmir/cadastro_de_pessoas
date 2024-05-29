@@ -7,7 +7,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_endereco")
-public class Endereco implements Serializable {
+public class EnderecoModel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
