@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.*;
 
 @Entity
 @Table(name = "tb_endereco")
@@ -22,20 +23,27 @@ public class EnderecoModel implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(name="estado", nullable=false, length=2)
 	private String estado;
 	
+	@Column(name="cidade", nullable=false, length=45)
 	private String cidade;
 	
+	@Column(name="logradouro", nullable=false, length=60)
 	private String logradouro;
 	
-	@Column(name = "numero_casa")
+	@Column(name = "numero_casa", nullable=false)
 	private String numeroCasa;
 	
+	@Column(name="cep", nullable=false, length=10)
 	private String cep;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_pessoa")
+	@JoinColumn(name = "id_pessoa", nullable=false)
 	private PessoaModel pessoa;
+
+	//GETTERS AND SETTERS
+	
 
 	public Long getId() {
 		return id;
@@ -92,11 +100,13 @@ public class EnderecoModel implements Serializable {
 	public void setPessoa(PessoaModel pessoa) {
 		this.pessoa = pessoa;
 	}
-
+	
+	//GETTERS AND SETTERS
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
